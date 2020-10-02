@@ -1,8 +1,3 @@
-- name: Install yay
-  become: yes
-  aur:
-    name: yay-bin
-
 - name: Install general packages
   aur:
     name:
@@ -17,18 +12,11 @@
       - network-manager-applet
       - pulseaudio
       - pulseaudio-bluetooth
-      - reflector
       - rsync
       - ttf-dejavu
       - ttf-fira-code
       - ttf-font-awesome
       - whois
-  register: general_tools_installed
-
-- name: Generate Pacman mirrorlist
-  become: yes
-  shell: reflector --protocol https --latest 70 --sort rate --save /etc/pacman.d/mirrorlist
-  when: general_tools_installed.changed
 
 - name: Enable Bluetooth
   become: yes

@@ -3,6 +3,7 @@
   package:
     name:
       - grim
+      - playerctl
       - slurp
       - sway
       - swayidle

@@ -68,7 +68,7 @@ bindsym Mod4+s layout stacking
 bindsym Mod4+space exec rofi -show drun
 bindsym Mod4+v splitv
 bindsym Mod4+w layout tabbed
-bindsym Print exec grim -g "$(slurp; sleep 5)" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
+bindsym Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%s_grim.png')
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle

@@ -5,7 +5,7 @@
       - acpi_call
       - brightnessctl
       - ethtool
-      - smartmon
+      - smartmontools
       - tlp
 
 - name: Enable tlp

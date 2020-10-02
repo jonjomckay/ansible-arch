@@ -37,6 +37,12 @@
     enabled: yes
     state: started
 
+- name: Create systemd user directory
+  file:
+    dest: $HOME/.config/systemd/user
+    recurse: yes
+    state: directory
+
 - name: Copy systemd units
   copy:
     src: "{{ item }}"

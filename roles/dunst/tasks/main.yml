@@ -3,6 +3,7 @@
   package:
     name:
       - dunst
+  register: dunst_installed
 
 - name: Create Dunst configuration directory
   file:
@@ -14,10 +15,18 @@
   copy:
     src: dunstrc
     dest: $HOME/.config/dunst/dunstrc
+  register: dunst_configured
 
 - name: Enable Dunst
   systemd:
     name: dunst
     enabled: yes
     scope: user
+
+- name: Restart Dunst
+  systemd:
+    name: dunst
+    scope: user
     state: restarted
+  # Only restart if the configuration has changed, and if this isn't the initial install (as there's no DISPLAY yet)
+  when: dunst_configured.changed and not dunst_installed.changed

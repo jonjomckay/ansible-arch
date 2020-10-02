@@ -7,7 +7,6 @@
       - vim
       - zsh
       - zsh-completions
-  become: yes
     
 - name: Install Oh My Zsh
   git:

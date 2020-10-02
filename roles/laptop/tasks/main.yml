@@ -15,7 +15,14 @@
     enabled: yes
     state: started
 
+- name: Create /etc/libinput
+  become: yes
+  file:
+    dest: /etc/libinput
+    state: directory
+
 - name: Configure touchpad
+  become: yes
   copy:
     src: local-overrides.quirks
     dest: /etc/libinput/local-overrides.quirks

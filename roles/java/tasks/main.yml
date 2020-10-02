@@ -1,0 +1,6 @@
+- name: Install Java
+  become: yes
+  package:
+    name:
+      - maven
+      - jre11-openjdk

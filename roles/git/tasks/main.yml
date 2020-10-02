@@ -1,0 +1,16 @@
+- name: Install Git
+  package:
+    name:
+      - git
+  become: yes
+
+- name: Create Git configuration directory
+  file:
+    dest: $HOME/.config/git
+    recurse: yes
+    state: directory
+
+- name: Configure Git
+  copy:
+    src: config
+    dest: $HOME/.config/git/config

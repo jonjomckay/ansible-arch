@@ -1,0 +1,23 @@
+- name: Install Dunst
+  become: yes
+  package:
+    name:
+      - dunst
+
+- name: Create Dunst configuration directory
+  file:
+    dest: $HOME/.config/dunst
+    recurse: yes
+    state: directory
+
+- name: Configure Dunst
+  copy:
+    src: dunstrc
+    dest: $HOME/.config/dunst/dunstrc
+
+- name: Enable Dunst
+  systemd:
+    name: dunst
+    enabled: yes
+    scope: user
+    state: restarted

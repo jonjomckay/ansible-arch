@@ -1,0 +1,5 @@
+[Touchpad pressure override]
+MatchUdevType=touchpad
+MatchName=*SynPS/2 Synaptics TouchPad
+MatchDMIModalias=dmi:*svnLENOVO:*:pvrThinkPadT14*
+AttrThumbPressureThreshold=75

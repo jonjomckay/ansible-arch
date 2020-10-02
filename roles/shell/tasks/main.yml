@@ -1,0 +1,41 @@
+- name: Install shell programs
+  aur:
+    name:
+      - alacritty
+      - bat
+      - starship-bin
+      - vim
+      - zsh
+      - zsh-completions
+  become: yes
+    
+- name: Install Oh My Zsh
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh
+    dest: $HOME/.config/oh-my-zsh
+
+- name: Install zplug
+  git:
+    repo: https://github.com/zplug/zplug
+    dest: $HOME/.config/zplug
+
+- name: Change default shell to ZSH
+  user:
+    name: jonjo
+    shell: /usr/bin/zsh
+
+- name: Configure ZSH
+  copy:
+    src: zshrc
+    dest: $HOME/.zshrc
+
+- name: Create Alacritty configuration directory
+  file:
+    dest: $HOME/.config/alacritty
+    recurse: yes
+    state: directory
+
+- name: Configure Alacritty
+  copy:
+    src: alacritty.yml
+    dest: $HOME/.config/alacritty/alacritty.yml

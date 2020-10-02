@@ -1,0 +1,41 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.config/oh-my-zsh
+
+# Enable zplug and install plugins
+source $HOME/.config/zplug/init.zsh
+
+zplug "zsh-users/zsh-autosuggestions", defer:2
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+if ! zplug check; then
+  zplug install
+fi
+
+zplug load
+
+# Enable Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+
+# Configure ZSH history
+HISTSIZE="10000"
+SAVEHIST="10000"
+HISTFILE="$HOME/.zsh_history"
+
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+unsetopt HIST_EXPIRE_DUPS_FIRST
+setopt SHARE_HISTORY
+unsetopt EXTENDED_HISTORY
+
+# Enable Starship (except in Emacs)
+if [ -z "$INSIDE_EMACS" ]; then
+  eval "$(starship init zsh)"
+fi
+
+# Aliases
+alias cat='bat -pp'
+
+# Environment
+export EDITOR=vim
+export GPG_TTY=$(tty)

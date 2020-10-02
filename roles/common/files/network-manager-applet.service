@@ -1,0 +1,10 @@
+[Unit]
+Description=Network Manager applet
+After=graphical-session-pre.target
+PartOf=graphical-session.target
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/nm-applet

@@ -1,0 +1,12 @@
+[Unit]
+Description=Waybar status bar
+After=graphical-session-pre.target
+PartOf=graphical-session.target
+X-Restart-Triggers=$HOME/.config/waybar/config $HOME/.config/waybar/style.css
+
+[Install]
+WantedBy=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/waybar
+Restart=on-failure

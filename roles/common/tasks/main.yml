@@ -1,0 +1,59 @@
+- name: Install yay
+  become: yes
+  aur:
+    name: yay-bin
+
+- name: Install general packages
+  aur:
+    name:
+      - aria2
+      - bind
+      - blueman
+      - bmon
+      - htop
+      - iotop
+      - jq
+      - mpdris2
+      - network-manager-applet
+      - pulseaudio
+      - pulseaudio-bluetooth
+      - reflector
+      - rsync
+      - ttf-dejavu
+      - ttf-fira-code
+      - ttf-font-awesome
+      - whois
+  register: general_tools_installed
+
+- name: Generate Pacman mirrorlist
+  become: yes
+  shell: reflector --protocol https --latest 70 --sort rate --save /etc/pacman.d/mirrorlist
+  when: general_tools_installed.changed
+
+- name: Enable Bluetooth
+  become: yes
+  systemd:
+    name: bluetooth
+    enabled: yes
+    state: started
+
+- name: Copy systemd units
+  copy:
+    src: "{{ item }}"
+    dest: $HOME/.config/systemd/user/{{ item }}
+  with_items:
+    - blueman-applet.service
+    - network-manager-applet.service
+  register: systemd_units_copied
+
+- name: Enable systemd units
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    scope: user
+    state: "{{ 'restarted' if systemd_units_copied.changed else 'started' }}"
+  with_items:
+    - blueman-applet.service
+    - mpDris2.service
+    - network-manager-applet.service
+    - pulseaudio.service

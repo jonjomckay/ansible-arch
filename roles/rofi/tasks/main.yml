@@ -1,0 +1,16 @@
+- name: Install Rofi
+  become: yes
+  package:
+    name:
+      - rofi
+
+- name: Create Rofi configuration directory
+  file:
+    dest: $HOME/.config/rofi
+    recurse: yes
+    state: directory
+
+- name: Configure Rofi
+  copy:
+    src: config
+    dest: $HOME/.config/rofi/config

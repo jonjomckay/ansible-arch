@@ -1,0 +1,15 @@
+- name: Install VScodium
+  aur:
+    name:
+      - vscodium-bin
+
+- name: Create VScodium configuration directory
+  file:
+    dest: $HOME/.config/VSCodium/User
+    recurse: yes
+    state: directory
+
+- name: Configure VScodium
+  copy:
+    src: settings.json
+    dest: $HOME/.config/VSCodium/User/settings.json

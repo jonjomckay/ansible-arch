@@ -1,0 +1,14 @@
+- name: Install Syncthing
+  become: yes
+  package:
+    name:
+      - syncthing
+  register: syncthing_installed
+
+- name: Enable Syncthing
+  systemd:
+    name: syncthing
+    enabled: yes
+    scope: user
+    state: restarted
+  when: syncthing_installed.changed

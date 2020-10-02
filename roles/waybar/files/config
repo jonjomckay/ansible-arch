@@ -1,0 +1,119 @@
+{
+    "battery": {
+        "bat": "BAT0",
+        "format": "{icon} {capacity}% ({time} remaining)",
+        "format-charging": "{icon} {capacity}% ({time} until full)",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format-time": "{H}:{M}",
+        "interval": 60,
+        "max-length": 25,
+        "states": {
+            "critical": 15,
+            "warning": 30
+        }
+    },
+    "clock": {
+        "format": "{:%b %d %Y, %H:%M:%S}",
+        "interval": 1,
+        "tooltip": false
+    },
+    "cpu": {
+        "format": " {}%",
+        "interval": 2,
+        "max-length": 10
+    },
+    "custom/waybar-media": {
+        "escape": true,
+        "exec": "python3 $HOME/.config/waybar/waybar-media.py status",
+        "on-click": "python3 $HOME/.config/waybar/waybar-media.py playpause",
+        "on-scroll-down": "python3 $HOME/.config/waybar/waybar-media.py next",
+        "on-scroll-up": "python3 $HOME/.config/waybar/waybar-media.py previous",
+        "return-type": "json"
+    },
+    "disk": {
+        "format": " {percentage_used}%",
+        "interval": 10,
+        "path": "/"
+    },
+    "layer": "top",
+    "memory": {
+        "format": " {}%",
+        "interval": 2,
+        "max-length": 10
+    },
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "custom/waybar-media",
+        "battery",
+        "temperature#cpu",
+        "temperature#gpu",
+        "disk",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "tray",
+        "clock"
+    ],
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-icons": {
+            "car": "",
+            "default": [
+                "",
+                ""
+            ],
+            "hands-free": "",
+            "headphone": "",
+            "headset": "",
+            "phone": "",
+            "portable": ""
+        },
+        "format-muted": "",
+        "on-click": "pavucontrol",
+        "scroll-step": 1
+    },
+    "sway/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true,
+        "format": "{name}:  {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "default": "",
+            "focused": "",
+            "urgent": ""
+        }
+    },
+    "temperature#cpu": {
+        "critical-threshold": 80,
+        "format": " CPU: {temperatureC}°C",
+        "format-critical": " CPU: {temperatureC}°C",
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "interval": 2
+    },
+    "temperature#gpu": {
+        "critical-threshold": 80,
+        "format": " GPU: {temperatureC}°C",
+        "format-critical": " GPU: {temperatureC}°C",
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+        "interval": 2
+    },
+    "tray": {
+        "icon-size": "21",
+        "spacing": 10
+    }
+}

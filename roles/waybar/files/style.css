@@ -1,0 +1,55 @@
+* {
+    background: none;
+    font-size: 12px;
+    font-family: "Fira Code Retina";
+  }
+  
+  #custom-waybar-media, #battery, #temperature, #disk, #cpu, #memory, #pulseaudio, #tray, #clock {
+    background-color: rgba(0,0,0,.7);
+    border-radius: 10px;
+    color: #fff;
+    padding: 8px 12px;
+    margin: 15px 10px 0 0;
+  }
+  
+  #battery.charging {
+    color: #63B3ED;
+  }
+  
+  #workspaces {
+    margin-left: 15px;
+  }
+  
+  #clock {
+    margin-right: 15px;
+  }
+  
+  #temperature.critical {
+    color: #ff0000;
+  }
+  
+  #pulseaudio {
+    background-color: rgba(0,0,0,.7);
+  }
+  
+  #workspaces button {
+    border-radius: 10px;
+    padding: 1px 8px;
+    margin: 15px 5px 0 0;
+    background-color: transparent;
+    color: #ffffff;
+    border-bottom: 3px solid transparent;
+  }
+  
+  #workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+  }
+  
+  #workspaces button.focused {
+    background-color: rgba(0,0,0,.7);
+  }
+  
+  #workspaces button.urgent {
+    background-color: #eb4d4b;
+  }

@@ -1,0 +1,7 @@
+[commit]
+    gpgSign = true
+
+[user]
+    email = "jonjo@jonjomckay.com"
+    name = "Jonjo McKay"
+    signingKey = "C4CC649D7F58611D"

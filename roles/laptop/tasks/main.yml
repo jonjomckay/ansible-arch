@@ -1,0 +1,21 @@
+- name: Install laptop dependencies
+  become: yes
+  package:
+    name:
+      - acpi_call
+      - brightnessctl
+      - ethtool
+      - smartmon
+      - tlp
+
+- name: Enable tlp
+  become: yes
+  service:
+    name: tlp
+    enabled: yes
+    state: started
+
+- name: Configure touchpad
+  copy:
+    src: local-overrides.quirks
+    dest: /etc/libinput/local-overrides.quirks

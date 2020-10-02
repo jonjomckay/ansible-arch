@@ -1,0 +1,36 @@
+- name: Install Waybar
+  become: yes
+  package:
+    name:
+      - python-pydbus
+      - python-psutil
+      - waybar
+
+- name: Create Waybar configuration directory
+  file:
+    dest: $HOME/.config/waybar
+    recurse: yes
+    state: directory
+
+- name: Configure Waybar
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/.config/waybar/{{ item }}"
+  with_items:
+    - config
+    - style.css
+    - waybar-media.py
+  register: waybar_configured
+
+- name: Copy Waybar systemd unit
+  copy:
+    src: waybar.service
+    dest: $HOME/.config/systemd/user/waybar.service
+
+- name: Enable Waybar
+  systemd:
+    name: waybar
+    enabled: yes
+    scope: user
+    state: restarted
+  when: waybar_configured.changed

@@ -1,0 +1,7 @@
+- name: Install NodeJS stuff
+  become: yes
+  package:
+    name:
+      - npm
+      - nodejs
+      - yarn

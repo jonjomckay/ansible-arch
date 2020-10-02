@@ -1,0 +1,9 @@
+- name: Install Firefox
+  become: yes
+  package:
+    name:
+      - firefox-developer-edition
+      - firefox-developer-edition-i18n-en-gb
+
+# dom.media.mediasession.enabled
+# media.mediasource.enabled

@@ -1,0 +1,30 @@
+- name: Install Sway
+  become: yes
+  package:
+    name:
+      - grim
+      - slurp
+      - sway
+      - swayidle
+      - swaylock
+      - xorg-server-xwayland
+
+- name: Create Sway configuration directory
+  file:
+    dest: $HOME/.config/sway
+    recurse: yes
+    state: directory
+
+- name: Configure Sway
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/.config/sway/{{ item }}"
+  with_items:
+    - background.jpg
+    - config
+    - fader.py
+
+- name: Configure ZSH to start Sway
+  copy:
+    src: sway.zsh
+    dest: "$HOME/.config/oh-my-zsh/custom"

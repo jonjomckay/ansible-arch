@@ -1,0 +1,36 @@
+- name: Install OpenSSH
+  package:
+    name:
+      - openssh
+  become: yes
+
+- name: Create OpenSSH configuration directory
+  file:
+    dest: $HOME/.ssh
+    recurse: yes
+    state: directory
+
+- name: Configure SSH
+  copy:
+    src: "{{ item }}"
+    dest: $HOME/.ssh/{{ item }}
+  with_items:
+    - authorized_keys
+    - config
+
+- name: Configure sshd
+  become: yes
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - { regexp: '^PasswordAuthentication', line: 'PasswordAuthentication no' }
+    - { regexp: '^PermitRootLogin', line: 'PermitRootLogin no' }
+
+- name: Enable sshd
+  become: yes
+  service:
+    name: sshd
+    enabled: yes
+    state: restarted

@@ -25,6 +25,11 @@
     - config
     - fader.py
 
+- name: Copy Sway systemd target
+  copy:
+    src: sway-session.target
+    dest: $HOME/.config/systemd/user/sway-session.target
+
 - name: Configure ZSH to start Sway
   copy:
     src: sway.zsh

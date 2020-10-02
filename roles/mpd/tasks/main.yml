@@ -1,0 +1,54 @@
+- name: Install mpd
+  aur:
+    name:
+      - mpd
+      - mpdris2
+      - mpdscribble
+      - ymuse
+
+- name: Create mpd configuration directories
+  file:
+    dest: $HOME/.config/{{ item }}
+    state: directory
+  with_items:
+    - mpd
+    - mpdscribble
+    - systemd/user/mpdscribble.service.d
+
+- name: Configure mpd
+  template:
+    src: mpd.conf
+    dest: $HOME/.config/mpd/mpd.conf
+  register: mpd_configured
+
+- name: Configure mpdscribble
+  template:
+    src: mpdscribble.conf
+    dest: $HOME/.config/mpdscribble/mpdscribble.conf
+  register: mpdscribble_configured
+
+- name: Create mpdscribble systemd unit override
+  template:
+    src: mpdscribble.override.conf
+    dest: $HOME/.config/systemd/user/mpdscribble.service.d/override.conf
+
+- name: Mount music from NAS
+  mount:
+    src: //192.168.0.250/music
+    path: /mnt/music
+    fstype: cifs
+    opts: _netdev,noauto,x-systemd.automount,x-systemd.mount-timeout=10,username=jonjo,uid=1000,rw
+    state: mounted
+  become: true
+
+- name: Enable mpd
+  systemd:
+    daemon_reload: yes
+    name: "{{ item }}"
+    enabled: yes
+    scope: user
+    state: "{{ 'reloaded' if mpd_configured.changed else 'started' }}"
+  with_items:
+    - mpd.service
+    - mpDris2.service
+    - mpdscribble.service

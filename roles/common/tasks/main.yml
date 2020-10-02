@@ -60,6 +60,5 @@
     state: "{{ 'restarted' if systemd_units_copied.changed else 'started' }}"
   with_items:
     - blueman-applet.service
-    - mpDris2.service
     - network-manager-applet.service
     - pulseaudio.service

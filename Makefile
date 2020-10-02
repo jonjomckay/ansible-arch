@@ -9,4 +9,4 @@ export ANSIBLE_LIBRARY=./modules
 	# Install all the required Python packages
 	.venv/bin/pip install -r requirements.txt
 
-	.venv/bin/ansible-playbook -i inventory playbook-$@.yml
+	.venv/bin/ansible-playbook -i inventory --ask-vault-password playbook-$@.yml

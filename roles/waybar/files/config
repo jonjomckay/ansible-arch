@@ -1,8 +1,10 @@
 {
     "battery": {
         "bat": "BAT0",
-        "format": "{icon} {capacity}% ({time} remaining)",
-        "format-charging": "{icon} {capacity}% ({time} until full)",
+        "format": "{icon} {capacity}% ({time} left)",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {icon} {capacity}% ({time} until full)",
+        "format-plugged": " {icon} {capacity}%",
         "format-icons": [
             "",
             "",
@@ -10,8 +12,9 @@
             "",
             ""
         ],
-        "format-time": "{H}:{M}",
-        "interval": 60,
+        "format-time": "{H}h{M}m",
+        "full-at": 96,
+        "interval": 10,
         "max-length": 25,
         "states": {
             "critical": 15,

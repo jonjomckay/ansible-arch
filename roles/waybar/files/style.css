@@ -1,7 +1,10 @@
 * {
-    background: none;
     font-size: 12px;
     font-family: "Fira Code Retina";
+  }
+
+  window#waybar {
+    background: none;
   }
   
   #custom-waybar-media, #battery, #temperature, #disk, #cpu, #memory, #pulseaudio, #tray, #clock {

@@ -26,15 +26,25 @@
     - fader.py
   register: sway_configured
 
-- name: Copy Sway systemd target
+- name: Copy Sway systemd files
   copy:
-    src: sway-session.target
-    dest: $HOME/.config/systemd/user/sway-session.target
+    src: "{{ item }}"
+    dest: $HOME/.config/systemd/user/{{ item }}
+  with_items:
+    - sway-session.target
+    - swayidle.service
 
 - name: Configure ZSH to start Sway
   copy:
     src: sway.zsh
     dest: "$HOME/.config/oh-my-zsh/custom"
+
+- name: Enable swayidle
+  systemd:
+    name: swayidle
+    enabled: yes
+    scope: user
+    state: restarted
 
 - name: Reload Sway
   shell: swaymsg reload

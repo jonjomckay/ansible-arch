@@ -50,3 +50,16 @@
     - blueman-applet.service
     - network-manager-applet.service
     - pulseaudio.service
+
+- name: Create GTK+ configuration directory
+  file:
+    path: $HOME/.config/gtk-3.0
+    state: directory
+
+- name: Configure GTK+
+  copy:
+    src: "{{ item.src }}"
+    dest: $HOME/{{ item.dest }}
+  with_items:
+    - { src: gtkrc-2.0,   dest: '.gtkrc-2.0' }
+    - { src: gtk-3-0.ini, dest: '.config/gtk-3.0/settings.ini' }

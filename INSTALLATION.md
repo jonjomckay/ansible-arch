@@ -169,7 +169,7 @@
     title	Arch Linux
     linux	/vmlinuz-linux
     initrd	/initramfs-linux.img
-    options cryptdevice=UUID=<YOUR-PARTITION-UUID>:luks:allow-discards resume=/dev/mapper/vg0-swap root=/dev/mapper/vg0-root rw
+    options cryptdevice=UUID=<YOUR-PARTITION-UUID>:luks:allow-discards root=/dev/mapper/luks rw
     ```
 
 ## Cleanup

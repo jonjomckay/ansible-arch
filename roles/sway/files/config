@@ -46,10 +46,7 @@ bindsym Mod4+Shift+Right move right
 bindsym Mod4+Shift+Up move up
 bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-bindsym Mod4+Shift+h move left
-bindsym Mod4+Shift+j move down
-bindsym Mod4+Shift+k move up
-bindsym Mod4+Shift+l move right
+bindsym Mod4+Shift+l exec swaylock
 bindsym Mod4+Shift+minus move scratchpad
 bindsym Mod4+Shift+q kill
 bindsym Mod4+Shift+space floating toggle

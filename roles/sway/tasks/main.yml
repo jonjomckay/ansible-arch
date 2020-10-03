@@ -24,6 +24,7 @@
     - background.jpg
     - config
     - fader.py
+  register: sway_configured
 
 - name: Copy Sway systemd target
   copy:
@@ -34,3 +35,7 @@
   copy:
     src: sway.zsh
     dest: "$HOME/.config/oh-my-zsh/custom"
+
+- name: Reload Sway
+  shell: swaymsg reload
+  when: sway_configured.changed

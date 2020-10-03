@@ -225,8 +225,8 @@ class MediaWatcherStatusBuilder:
             None if artist_width == 0 else textwrap.shorten(player.artist, width=artist_width, placeholder=placeholder)
         )
 
-        text_prefix = '🎵 Now playing: '
-        text_suffix = ' (Paused)' if player.status == 'paused' else ''
+        text_prefix = '<b>Now playing:</b> '
+        text_suffix = ' <i>(Paused)</i>' if player.status == 'paused' else ''
 
         if short_title and short_artist:
             return text_prefix + separator.join((short_artist, short_title)) + text_suffix

@@ -3,7 +3,7 @@
         "bat": "BAT0",
         "format": "{icon} {capacity}% ({time} left)",
         "format-full": "{icon} {capacity}%",
-        "format-charging": " {icon} {capacity}% ({time} until full)",
+        "format-charging": " {icon} {capacity}%",
         "format-plugged": " {icon} {capacity}%",
         "format-icons": [
             "",
@@ -27,13 +27,14 @@
         "tooltip": false
     },
     "cpu": {
-        "format": " {}%",
+        "format": " {:2}%",
         "interval": 2,
         "max-length": 10
     },
     "custom/waybar-media": {
-        "escape": true,
+        "escape": false,
         "exec": "python3 $HOME/.config/waybar/waybar-media.py status",
+        "format": " {}",
         "on-click": "python3 $HOME/.config/waybar/waybar-media.py playpause",
         "on-scroll-down": "python3 $HOME/.config/waybar/waybar-media.py next",
         "on-scroll-up": "python3 $HOME/.config/waybar/waybar-media.py previous",
@@ -46,7 +47,7 @@
     },
     "layer": "top",
     "memory": {
-        "format": " {}%",
+        "format": " {:2}%",
         "interval": 2,
         "max-length": 10
     },
@@ -80,7 +81,7 @@
             "phone": "",
             "portable": ""
         },
-        "format-muted": "",
+        "format-muted": "",
         "on-click": "pavucontrol",
         "scroll-step": 1
     },
@@ -103,15 +104,15 @@
     },
     "temperature#cpu": {
         "critical-threshold": 80,
-        "format": " CPU: {temperatureC}°C",
-        "format-critical": " CPU: {temperatureC}°C",
+        "format": " <b>CPU:</b> {temperatureC}°C",
+        "format-critical": " <b>CPU:</b> {temperatureC}°C",
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "interval": 2
     },
     "temperature#gpu": {
         "critical-threshold": 80,
-        "format": " GPU: {temperatureC}°C",
-        "format-critical": " GPU: {temperatureC}°C",
+        "format": " <b>GPU:</b> {temperatureC}°C",
+        "format-critical": " <b>GPU:</b> {temperatureC}°C",
         "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
         "interval": 2
     },

@@ -7,4 +7,4 @@ PartOf=graphical-session.target
 WantedBy=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/nm-applet
+ExecStart=/usr/bin/nm-applet --indicator

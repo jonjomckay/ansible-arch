@@ -5,6 +5,8 @@
       - acpi_call
       - brightnessctl
       - ethtool
+      - fprintd
+      - fwupd
       - smartmontools
       - tlp
 
@@ -26,3 +28,21 @@
   copy:
     src: local-overrides.quirks
     dest: /etc/libinput/local-overrides.quirks
+
+- name: Enable firmware updates
+  become: yes
+  shell: fwupdmgr --assume-yes enable-remote lvfs
+
+- name: Refresh available firmware
+  become: yes
+  shell: fwupdmgr --assume-yes refresh --force
+
+- name: Update firmware
+  become: yes
+  shell: fwupdmgr --assume-yes update
+
+- name: Configure fingerprint reader
+  become: yes
+  copy:
+    src: system-local-login
+    dest: /etc/pam.d/system-local-login

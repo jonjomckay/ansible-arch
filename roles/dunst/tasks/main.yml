@@ -21,6 +21,7 @@
   systemd:
     name: dunst
     enabled: yes
+    daemon_reload: yes
     scope: user
 
 - name: Restart Dunst

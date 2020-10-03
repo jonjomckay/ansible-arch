@@ -30,6 +30,7 @@
 - name: Enable Waybar
   systemd:
     name: waybar
+    daemon_reload: yes
     enabled: yes
     scope: user
     state: restarted

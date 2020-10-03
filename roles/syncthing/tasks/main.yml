@@ -8,6 +8,7 @@
 - name: Enable Syncthing
   systemd:
     name: syncthing
+    daemon_reload: yes
     enabled: yes
     scope: user
     state: restarted

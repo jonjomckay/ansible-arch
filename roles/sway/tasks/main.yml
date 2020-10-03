@@ -42,6 +42,7 @@
 - name: Enable swayidle
   systemd:
     name: swayidle
+    daemon_reload: yes
     enabled: yes
     scope: user
     state: restarted

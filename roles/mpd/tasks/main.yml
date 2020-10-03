@@ -43,8 +43,8 @@
 
 - name: Enable mpd
   systemd:
-    daemon_reload: yes
     name: "{{ item }}"
+    daemon_reload: yes
     enabled: yes
     scope: user
     state: "{{ 'reloaded' if mpd_configured.changed else 'started' }}"

@@ -127,7 +127,7 @@ gaps top 0
 exec swaymsg workspace 1
 
 # Enable fading of windows
-exec python3 ./fader.py
+exec python3 $HOME/.config/sway/fader.py
 
 # Start systemd user services
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"

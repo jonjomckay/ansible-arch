@@ -4,6 +4,7 @@
     name:
       - grim
       - playerctl
+      - python-i3ipc
       - slurp
       - sway
       - swayidle

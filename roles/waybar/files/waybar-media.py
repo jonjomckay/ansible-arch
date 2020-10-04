@@ -199,7 +199,7 @@ class MediaWatcherStatusBuilder:
 
         return '\n'.join(tooltip) if tooltip else None
 
-    def _build_text(self, max_width, title_to_artist_ratio=2 / 3, separator=' - ', placeholder='…'):
+    def _build_text(self, max_width, title_to_artist_ratio=2 / 3, separator=' by ', placeholder='…'):
         max_width = max_width - len(separator)
         player = self.watcher.player
 
@@ -218,18 +218,21 @@ class MediaWatcherStatusBuilder:
         else:
             return None
 
+        # This is for YouTube Music, which adds an annoying " - Topic" suffix to artist names
+        sanitized_artist = player.artist.replace(' - Topic', '') if player.artist else ''
+
         short_title = (
             None if title_width == 0 else textwrap.shorten(player.title, width=title_width, placeholder=placeholder)
         )
         short_artist = (
-            None if artist_width == 0 else textwrap.shorten(player.artist, width=artist_width, placeholder=placeholder)
+            None if artist_width == 0 else textwrap.shorten(sanitized_artist, width=artist_width, placeholder=placeholder)
         )
 
         text_prefix = '<b>Now playing:</b> '
         text_suffix = ' <i>(Paused)</i>' if player.status == 'paused' else ''
 
         if short_title and short_artist:
-            return text_prefix + separator.join((short_artist, short_title)) + text_suffix
+            return text_prefix + separator.join((short_title, short_artist)) + text_suffix
         elif short_title and not short_artist:
             return text_prefix + short_title + text_suffix
         elif short_artist and not short_title:
@@ -248,7 +251,7 @@ class MediaWatcherStatusBuilder:
 
     def build_status(self):
         return json.dumps(
-            {'tooltip': self._build_tooltip(), 'text': self._build_text(max_width=80), 'class': self._build_classes()}
+            {'tooltip': self._build_tooltip(), 'text': self._build_text(max_width=120), 'class': self._build_classes()}
         )
 
     def print_status(self):

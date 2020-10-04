@@ -16,6 +16,10 @@ window#waybar {
   min-width: 45px;
 }
 
+#battery {
+  min-width: 135px;
+}
+
 #battery.charging {
   color: #63B3ED;
   min-width: 65px;

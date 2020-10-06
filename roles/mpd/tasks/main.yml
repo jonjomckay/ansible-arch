@@ -47,7 +47,7 @@
     daemon_reload: yes
     enabled: yes
     scope: user
-    state: "{{ 'reloaded' if mpd_configured.changed else 'started' }}"
+    state: started
   with_items:
     - mpd.service
     - mpDris2.service

@@ -9,6 +9,7 @@
       - sway
       - swayidle
       - swaylock
+      - xdg-user-dirs
       - xorg-server-xwayland
 
 - name: Create Sway configuration directory

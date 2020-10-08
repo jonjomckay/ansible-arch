@@ -2,6 +2,7 @@
 
 # Based on https://github.com/yurihs/waybar-media
 
+import html
 import json
 import math
 import os
@@ -232,7 +233,7 @@ class MediaWatcherStatusBuilder:
         text_suffix = ' <i>(Paused)</i>' if player.status == 'paused' else ''
 
         if short_title and short_artist:
-            return text_prefix + separator.join((short_title, short_artist)) + text_suffix
+            return text_prefix + html.escape(separator.join((short_title, short_artist))) + text_suffix
         elif short_title and not short_artist:
             return text_prefix + short_title + text_suffix
         elif short_artist and not short_title:

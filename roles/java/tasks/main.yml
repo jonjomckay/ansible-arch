@@ -4,3 +4,8 @@
     name:
       - maven
       - jre11-openjdk
+
+- name: Ensure non-reparenting is enabled
+  lineinfile:
+    dest: $HOME/.zprofile
+    line: export _JAVA_AWT_WM_NONREPARENTING=1

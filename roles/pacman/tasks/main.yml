@@ -17,8 +17,8 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   with_items:
-    - { regexp: '^CFLAGS', line: 'CFLAGS="-march=native"' }
-    - { regexp: '^CXXFLAGS', line: 'CFLAGS="-march=native"' }
+    - { regexp: '^CFLAGS', line: 'CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt"' }
+    - { regexp: '^CXXFLAGS', line: 'CFLAGS="${CFLAGS}"' }
     - { regexp: '^MAKEFLAGS', line: 'MAKEFLAGS="-j{{ ansible_processor_vcpus }}"' }
 
 - name: Install Pacman tools

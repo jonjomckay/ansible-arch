@@ -5,6 +5,7 @@
       - grim
       - playerctl
       - python-i3ipc
+      - sddm
       - slurp
       - sway
       - swayidle
@@ -48,6 +49,12 @@
     enabled: yes
     scope: user
     state: restarted
+
+- name: Enable SDDM
+  become: yes
+  systemd:
+    name: sddm
+    enabled: yes
 
 - name: Reload Sway
   shell: swaymsg reload

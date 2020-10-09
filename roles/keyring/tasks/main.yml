@@ -5,8 +5,3 @@
       - keepassxc
       - libsecret
   become: yes
-
-- name: Configure ZSH to start the keyring
-  copy:
-    src: keyring.zsh
-    dest: "$HOME/.config/oh-my-zsh/custom"

@@ -2,5 +2,6 @@ dependencies:
 - common
 - dunst
 - rofi
+- sddm
 - shell
 - waybar

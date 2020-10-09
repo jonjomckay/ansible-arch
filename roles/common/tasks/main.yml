@@ -64,3 +64,10 @@
   with_items:
     - { src: gtkrc-2.0,   dest: '.gtkrc-2.0' }
     - { src: gtk-3-0.ini, dest: '.config/gtk-3.0/settings.ini' }
+
+- name: Apply sysctl settings
+  become: yes
+  sysctl:
+    name: vm.max_map_count
+    value: "262144"
+    state: present

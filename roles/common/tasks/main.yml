@@ -71,3 +71,7 @@
     name: vm.max_map_count
     value: "262144"
     state: present
+
+- name: Enable NTP time syncing
+  become: yes
+  shell: timedatectl set-ntp true

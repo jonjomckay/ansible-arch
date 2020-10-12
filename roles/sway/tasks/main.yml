@@ -36,11 +36,6 @@
     - sway-session.target
     - swayidle.service
 
-- name: Configure ZSH to start Sway
-  copy:
-    src: sway.zsh
-    dest: "$HOME/.config/oh-my-zsh/custom"
-
 - name: Enable swayidle
   systemd:
     name: swayidle

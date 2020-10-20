@@ -10,11 +10,14 @@
     dest: /etc/sddm.conf.d
     state: directory
 
-- name: Configure SDDM theme
+- name: Configure SDDM
   become: yes
   copy:
-    src: theme.conf
-    dest: /etc/sddm.conf.d/theme.conf
+    src: "{{ item }}"
+    dest: /etc/sddm.conf.d/{{ item }}
+  with_items:
+    - autologin.conf
+    - theme.conf
 
 - name: Set SDDM user avatar
   become: yes

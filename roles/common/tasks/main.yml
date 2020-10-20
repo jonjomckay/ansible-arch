@@ -10,6 +10,7 @@
       - jq
       - mpdris2
       - network-manager-applet
+      - otf-ipafont
       - pulseaudio
       - pulseaudio-bluetooth
       - rsync

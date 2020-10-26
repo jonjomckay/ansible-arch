@@ -38,3 +38,16 @@
   copy:
     src: alacritty.yml
     dest: $HOME/.config/alacritty/alacritty.yml
+
+- name: Create getty@tty1.service.d override directory
+  become: yes
+  file:
+    dest: /etc/systemd/system/getty@tty1.service.d
+    recurse: yes
+    state: directory
+
+- name: Configure autologin for tty1
+  become: yes
+  copy:
+    src: getty.conf
+    dest: /etc/systemd/system/getty@tty1.service.d/override.conf

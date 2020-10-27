@@ -34,20 +34,11 @@
     dest: $HOME/.config/systemd/user/{{ item }}
   with_items:
     - sway-session.target
-    - swayidle.service
 
 - name: Configure ZSH to start Sway
   copy:
     src: sway.zsh
     dest: "$HOME/.config/oh-my-zsh/custom"
-
-- name: Enable swayidle
-  systemd:
-    name: swayidle
-    daemon_reload: yes
-    enabled: yes
-    scope: user
-    state: restarted
 
 - name: Reload Sway
   shell: swaymsg reload

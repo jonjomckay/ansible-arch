@@ -1,6 +1,7 @@
 - name: Install general packages
   aur:
     name:
+      - adobe-source-han-sans-kr-fonts
       - aria2
       - bind
       - blueman

@@ -4,7 +4,6 @@
       - mpd
       - mpdris2
       - mpdscribble
-      - ymuse
 
 - name: Create mpd configuration directories
   file:

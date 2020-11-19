@@ -131,3 +131,6 @@ exec python3 $HOME/.config/sway/fader.py
 
 # Start systemd user services
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+
+# Start anything that uses XDG autostart stuff
+exec dex -a

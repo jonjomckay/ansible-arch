@@ -2,6 +2,7 @@
   become: yes
   package:
     name:
+      - dex
       - grim
       - playerctl
       - python-i3ipc

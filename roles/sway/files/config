@@ -134,3 +134,6 @@ exec "systemctl --user import-environment; systemctl --user start sway-session.t
 
 # Start anything that uses XDG autostart stuff
 exec dex -a
+
+# Start Polkit for system privilege magic
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

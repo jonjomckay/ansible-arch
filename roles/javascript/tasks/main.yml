@@ -3,5 +3,5 @@
   package:
     name:
       - npm
-      - nodejs-lts-erbium
+      - nodejs
       - yarn

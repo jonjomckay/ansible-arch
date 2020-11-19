@@ -12,6 +12,7 @@
       - mpdris2
       - network-manager-applet
       - otf-ipafont
+      - polkit-gnome
       - pulseaudio
       - pulseaudio-bluetooth
       - rsync

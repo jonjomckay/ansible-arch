@@ -1,0 +1,9 @@
+configuration {
+    font: "Fira Code Retina 10";
+    location: 0;
+    modi: "window,run,ssh,drun";
+    yoffset: 0;
+    xoffset: 0;
+    show-icons: true;
+    theme: "slate";
+}

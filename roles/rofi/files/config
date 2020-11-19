@@ -1,9 +1,0 @@
-rofi.font: Fira Code Retina 10
-
-rofi.location: 0
-rofi.xoffset: 0
-rofi.yoffset: 0
-
-rofi.theme: solarized
-
-rofi.show-icons: true

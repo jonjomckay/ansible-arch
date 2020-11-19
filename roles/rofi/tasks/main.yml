@@ -12,5 +12,8 @@
 
 - name: Configure Rofi
   copy:
-    src: config
-    dest: $HOME/.config/rofi/config
+    src: "{{ item }}"
+    dest: $HOME/.config/rofi/{{ item }}
+  with_items:
+    - config.rasi
+    - slate.rasi

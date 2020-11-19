@@ -10,3 +10,5 @@
     - syncthing
     - sway
     - vscodium
+  vars:
+    network_main_interface: wlp3s0

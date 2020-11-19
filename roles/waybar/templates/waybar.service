@@ -1,6 +1,6 @@
 [Unit]
 Description=Waybar status bar
-After=graphical-session-pre.target
+After=graphical-session.target
 PartOf=graphical-session.target
 X-Restart-Triggers=$HOME/.config/waybar/config $HOME/.config/waybar/style.css
 

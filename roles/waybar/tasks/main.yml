@@ -13,7 +13,7 @@
     state: directory
 
 - name: Configure Waybar
-  copy:
+  template:
     src: "{{ item }}"
     dest: "$HOME/.config/waybar/{{ item }}"
   with_items:
@@ -23,7 +23,7 @@
   register: waybar_configured
 
 - name: Copy Waybar systemd unit
-  copy:
+  template:
     src: waybar.service
     dest: $HOME/.config/systemd/user/waybar.service
 

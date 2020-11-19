@@ -7,7 +7,7 @@ window#waybar {
   background: none;
 }
 
-#custom-waybar-media, #battery, #temperature, #disk, #cpu, #memory, #pulseaudio, #tray, #clock {
+#custom-waybar-media, #battery, #temperature, #disk, #cpu, #memory, #pulseaudio, #tray, #network, #clock {
   background-color: rgba(0,0,0,.7);
   border-radius: 10px;
   color: #fff;

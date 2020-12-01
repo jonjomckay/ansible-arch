@@ -20,6 +20,7 @@
       - ttf-dejavu
       - ttf-fira-code
       - ttf-font-awesome
+      - ttf-liberation
       - whois
 
 - name: Enable Bluetooth

@@ -1,0 +1,39 @@
+- name: Install i3
+  become: yes
+  package:
+    name:
+      - dex
+      - feh
+      - i3-gaps
+      - i3lock
+      - picom
+      - playerctl
+      - python-i3ipc
+      - xdg-user-dirs
+      - xorg-server
+
+- name: Create i3 configuration directory
+  file:
+    dest: $HOME/.config/i3
+    recurse: yes
+    state: directory
+
+- name: Configure i3
+  template:
+    src: "{{ item }}"
+    dest: "$HOME/.config/i3/{{ item }}"
+  with_items:
+    - config
+    - picom.conf
+  register: i3_configured
+
+- name: Copy i3 resources
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/.config/i3/{{ item }}"
+  with_items:
+    - background.jpg
+
+- name: Reload i3
+  shell: i3-msg restart
+  when: i3_configured.changed

@@ -12,6 +12,12 @@
       - xdg-user-dirs
       - xorg-server
 
+- name: Configure Xorg
+  become: yes
+  template:
+    src: 20-amdgpu.conf
+    dest: /etc/X11/xorg.conf.d/20-amdgpu.conf
+
 - name: Create i3 configuration directory
   file:
     dest: $HOME/.config/i3

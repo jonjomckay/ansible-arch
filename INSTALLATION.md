@@ -150,10 +150,10 @@
     $ bootctl --path=/boot install
     ```
 
-1. Add `encrypt` hook to `/etc/mkinitcpio.conf`. Make sure it comes after `block` but before `filesystems`
+1. Add `sd-encrypt` hook to `/etc/mkinitcpio.conf`, and replace the BusyBox init options with `systemd` ones. Make sure `sd-encrypt` comes after `block` but before `filesystems`
 
     ```
-    HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)
+    HOOKS=(base systemd autodetect keyboard sd-vconsole modconf block sd-encrypt filesystems fsck)
     $ mkinitcpio -p linux
     ```
 
@@ -169,7 +169,7 @@
     title	Arch Linux
     linux	/vmlinuz-linux
     initrd	/initramfs-linux.img
-    options cryptdevice=UUID=<YOUR-PARTITION-UUID>:luks:allow-discards root=/dev/mapper/luks rw
+    options rd.luks.name=<YOUR-PARTITION-UUID>=luks rd.luks.options=allow-discards root=/dev/mapper/luks rw
     ```
 
 ## Cleanup

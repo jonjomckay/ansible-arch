@@ -12,6 +12,7 @@
       - jq
       - mpdris2
       - network-manager-applet
+      - noto-fonts-emoji
       - otf-ipafont
       - polkit-gnome
       - pulseaudio

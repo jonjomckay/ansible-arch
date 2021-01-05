@@ -3,12 +3,13 @@
     - common
     - firefox
     - git
+    - i3
     - java
     - javascript
     - laptop
     - mpd
+    - polybar
     - syncthing
-    - sway
     - vscodium
   vars:
     network_main_interface: wlp3s0

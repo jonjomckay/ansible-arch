@@ -1,0 +1,21 @@
+- name: Install Polybar
+  aur:
+    name:
+      - python-pydbus
+      - python-psutil
+      - polybar
+
+- name: Create Polybar configuration directory
+  file:
+    dest: $HOME/.config/polybar
+    recurse: yes
+    state: directory
+
+- name: Configure Polybar
+  template:
+    src: "{{ item }}"
+    dest: "$HOME/.config/polybar/{{ item }}"
+  with_items:
+    - config.ini
+    - launch.sh
+  register: polybar_configured

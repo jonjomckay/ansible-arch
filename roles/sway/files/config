@@ -10,10 +10,10 @@ mouse_warping output
 workspace_layout default
 workspace_auto_back_and_forth no
 
-client.focused #007030 #007030 #ffffff 2b2b2b #285577
-client.focused_inactive #888888 #2b2b2b #ffffff 2b2b2b #5f676a
-client.unfocused #888888 #2b2b2b #ffffff 2b2b2b #222222
-client.urgent #900000 #900000 #ffffff 2b2b2b #900000
+client.focused #007030 #007030 #ffffff #2b2b2b #285577
+client.focused_inactive #888888 #2b2b2b #ffffff #2b2b2b #5f676a
+client.unfocused #888888 #2b2b2b #ffffff #2b2b2b #222222
+client.urgent #900000 #900000 #ffffff #2b2b2b #900000
 client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
 client.background #ffffff
 
@@ -122,6 +122,12 @@ mode "resize" {
 
 gaps inner 15
 gaps top 0
+
+# XWayland version
+for_window [class="Firefox"] inhibit_idle fullscreen
+
+# Wayland vesion
+for_window [app_id="firefox"] inhibit_idle fullscreen
 
 # Switch to workspace 1 on startup
 exec swaymsg workspace 1

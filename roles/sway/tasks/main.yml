@@ -38,7 +38,7 @@
 
 - name: Configure ZSH to start Sway
   copy:
-    src: sway.zsh
+    src: window-manager.zsh
     dest: "$HOME/.config/oh-my-zsh/custom"
 
 - name: Reload Sway

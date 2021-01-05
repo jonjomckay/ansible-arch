@@ -5,7 +5,6 @@
       - acpi_call
       - brightnessctl
       - ethtool
-      - fprintd
       - fwupd
       - smartmontools
       - tlp
@@ -42,7 +41,7 @@
   shell: fwupdmgr --assume-yes update
   ignore_errors: yes
 
-- name: Configure fingerprint reader
+- name: Disable fingerprint reader
   become: yes
   copy:
     src: system-local-login

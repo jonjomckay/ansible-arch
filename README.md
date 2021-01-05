@@ -18,12 +18,6 @@ echo "secret-content" | .venv/bin/ansible-vault encrypt_string --ask-vault-passw
 
 ## Afterwards
 
-* Register fingerprints with `fprintd`:
-
-    ```
-    $ fprintd-enroll
-    ```
-
 * Configure media session and MPRIS in Firefox:
 
     ```

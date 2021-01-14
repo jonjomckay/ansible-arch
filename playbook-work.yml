@@ -1,0 +1,16 @@
+- hosts: all
+  roles:
+   - common
+   - firefox
+   - git
+   - i3
+   - java
+   - javascript
+   - mpd
+   - polybar
+   - syncthing
+   - vscodium
+  vars:
+    i3_machine_specific: >
+      exec --no-startup-id xrandr --output DisplayPort-5 --auto --left-of DisplayPort-4
+    network_main_interface: wlp11s0

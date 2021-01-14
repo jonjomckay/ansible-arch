@@ -118,3 +118,6 @@ exec --no-startup-id feh --bg-fill $HOME/.config/i3/background.jpg
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Machine specific
+{{ i3_machine_specific }}

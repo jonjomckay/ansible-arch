@@ -12,4 +12,5 @@
     - syncthing
     - vscodium
   vars:
+    i3_machine_specific: ""
     network_main_interface: wlp3s0

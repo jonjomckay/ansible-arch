@@ -41,5 +41,5 @@
     - background.jpg
 
 - name: Reload i3
-  shell: i3-msg restart
+  shell: i3-msg reload
   when: i3_configured.changed

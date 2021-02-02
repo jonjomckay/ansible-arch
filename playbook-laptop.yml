@@ -12,5 +12,6 @@
     - syncthing
     - vscodium
   vars:
-    i3_machine_specific: ""
+    i3_machine_specific: >
+      exec --no-startup-id batsignal -f 0 -w 20 -c 10 -d 5 -m 15
     network_main_interface: wlp3s0

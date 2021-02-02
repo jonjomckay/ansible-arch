@@ -1,8 +1,9 @@
 - name: Install laptop dependencies
   become: yes
-  package:
+  aur:
     name:
       - acpi_call
+      - batsignal
       - brightnessctl
       - ethtool
       - fwupd

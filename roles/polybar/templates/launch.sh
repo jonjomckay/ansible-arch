@@ -7,6 +7,8 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Polybar
-polybar --config=~/.config/polybar/config.ini mybar &
+for m in $(polybar --list-monitors | cut -d":" -f1); do
+    MONITOR=$m polybar --reload --config=~/.config/polybar/config.ini mybar &
+done
 
 echo "Polybar launched..."

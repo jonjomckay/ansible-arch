@@ -7,9 +7,7 @@
     - java
     - javascript
     - laptop
-    - mpd
     - polybar
-    - syncthing
     - vscodium
   vars:
     i3_machine_specific: >

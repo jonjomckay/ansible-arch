@@ -10,6 +10,7 @@
       - playerctl
       - python-i3ipc
       - xdg-user-dirs
+      - xorg-xinit
       - xorg-server
 
 - name: Configure Xorg
@@ -17,6 +18,18 @@
   template:
     src: 20-amdgpu.conf
     dest: /etc/X11/xorg.conf.d/20-amdgpu.conf
+
+- name: Configure xinit
+  copy:
+    src: xinitrc
+    dest: $HOME/.xinitrc
+    owner: jonjo
+
+- name: Configure X autostart
+  copy:
+    src: window-manager.zsh
+    dest: $HOME/.config/oh-my-zsh/custom/window-manager.zsh
+    owner: jonjo
 
 - name: Create i3 configuration directory
   file:

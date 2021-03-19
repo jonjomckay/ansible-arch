@@ -1,18 +1,18 @@
-- name: Install GDM
-  aur:
-    name:
-      - gdm
-
-- name: Configure GDM
-  become: yes
-  template:
-    src: "{{ item }}"
-    dest: /etc/gdm/{{ item }}
-  with_items:
-    - custom.conf
-
-- name: Enable GDM
+- name: Disable GDM
   become: yes
   systemd:
     name: gdm
-    enabled: yes
+    enabled: no
+  ignore_errors: yes
+
+- name: Remove GDM
+  package:
+    name:
+      - gdm
+    state: absent
+
+- name: Unconfigure GDM
+  become: yes
+  file:
+    dest: /etc/gdm/custom.conf
+    state: absent

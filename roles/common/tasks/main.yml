@@ -1,3 +1,9 @@
+- name: Remove old packages
+  aur:
+    name:
+      - pulseaudio
+      - pulseaudio-bluetooth
+
 - name: Install general packages
   aur:
     name:
@@ -14,9 +20,9 @@
       - network-manager-applet
       - noto-fonts-emoji
       - otf-ipafont
+      - pipewire
+      - pipewire-pulse
       - polkit-gnome
-      - pulseaudio
-      - pulseaudio-bluetooth
       - rsync
       - ttf-dejavu
       - ttf-fira-code
@@ -56,7 +62,6 @@
   with_items:
     - blueman-applet.service
     - network-manager-applet.service
-    - pulseaudio.service
 
 - name: Create GTK+ configuration directory
   file:

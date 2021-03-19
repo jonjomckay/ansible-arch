@@ -97,7 +97,7 @@ gaps top 0
 for_window [class="Firefox"] inhibit_idle fullscreen
 
 # Switch to workspace 1 on startup
-exec i3-msg workspace 1
+exec i3-msg workspace 3
 
 # Enable picom for window opacity and fading
 exec --no-startup-id picom --config ~/.config/i3/picom.conf 
@@ -107,6 +107,13 @@ exec dex -a
 
 # Start Polkit for system privilege magic
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Start KeepassXC on workspace 3
+for_window [class="keepassxc"] move container to workspace 3
+exec --no-startup-id keepassxc
+
+# Start Nextcloud
+exec --no-startup-id $HOME/.config/i3/nextcloud.sh
 
 # Laptop
 exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1

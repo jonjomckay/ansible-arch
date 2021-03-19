@@ -41,9 +41,11 @@
   template:
     src: "{{ item }}"
     dest: "$HOME/.config/i3/{{ item }}"
+    mode: 0755
   with_items:
     - config
     - picom.conf
+    - nextcloud.sh
   register: i3_configured
 
 - name: Copy i3 resources

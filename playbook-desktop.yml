@@ -1,0 +1,14 @@
+- hosts: all
+  roles:
+    - common
+    - firefox
+    - git
+    - i3
+    - java
+    - javascript
+    - polybar
+#    - syncthing
+    - vscodium
+  vars:
+    i3_machine_specific: ""
+    network_main_interface: enp7s0

@@ -13,11 +13,12 @@
       - xorg-xinit
       - xorg-server
 
-- name: Configure Xorg
+- name: Configure Xorg for AMD GPUs
   become: yes
   template:
     src: 20-amdgpu.conf
     dest: /etc/X11/xorg.conf.d/20-amdgpu.conf
+  when: is_gpu_amd
 
 - name: Configure xinit
   copy:

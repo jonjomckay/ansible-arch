@@ -12,4 +12,5 @@
   vars:
     i3_machine_specific: >
       exec --no-startup-id batsignal -f 0 -w 20 -c 10 -d 5 -m 15
+    is_gpu_amd: yes
     network_main_interface: wlp3s0

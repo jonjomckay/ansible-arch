@@ -13,4 +13,5 @@
   vars:
     i3_machine_specific: >
       exec --no-startup-id xrandr --output DisplayPort-5 --auto --left-of DisplayPort-4
+    is_gpu_amd: no
     network_main_interface: wlp11s0

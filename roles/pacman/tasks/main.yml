@@ -21,10 +21,14 @@
     - { regexp: '^CXXFLAGS', line: 'CXXFLAGS="${CFLAGS}"' }
     - { regexp: '^MAKEFLAGS', line: 'MAKEFLAGS="-j{{ ansible_processor_vcpus }}"' }
 
+- name: Install Reflector
+  become: yes
+  pacman:
+    name: reflector
+
 - name: Install Pacman tools
   aur:
     name:
-      - reflector
       - yay-bin
   register: pacman_tools_installed
 

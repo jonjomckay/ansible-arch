@@ -6,6 +6,7 @@
       - feh
       - i3-gaps
       - i3lock
+      - parcellite
       - picom
       - playerctl
       - python-i3ipc

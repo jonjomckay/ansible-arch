@@ -129,5 +129,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Dunst
 exec --no-startup-id dunst
 
+# Parcellite (clipboard)
+exec --no-startup-id parcellite
+
 # Machine specific
 {{ i3_machine_specific }}

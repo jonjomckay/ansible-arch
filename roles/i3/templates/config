@@ -96,6 +96,9 @@ gaps top 0
 # XWayland version
 for_window [class="Firefox"] inhibit_idle fullscreen
 
+# Android emulator
+for_window [title=".*Emulator.*"] floating enable
+
 # Switch to workspace 1 on startup
 exec i3-msg workspace 3
 

@@ -16,6 +16,10 @@
     src: "{{ item }}"
     dest: "$HOME/.config/polybar/{{ item }}"
   with_items:
+    - config.0.ini
+    - config.1.ini
+    - config.bar.ini
     - config.ini
     - launch.sh
+    - music.sh
   register: polybar_configured

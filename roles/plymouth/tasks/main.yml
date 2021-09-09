@@ -1,0 +1,20 @@
+- name: Install Plymouth
+  become: yes
+  aur:
+    name:
+      - plymouth
+      - plymouth-theme-colorful-loop-git
+
+- name: Configure Plymouth
+  become: yes
+  copy:
+    src: plymouthd.conf
+    dest: /etc/plymouth/plymouthd.conf
+
+- name: Prompt mkinitcpio changes
+  msg: "Add this to /etc/mkinitcpio.conf: HOOKS=(base systemd sd-plymouth ... sd-encrypt ...)"
+
+- name: Rebuild initramfs
+  become: yes
+  shell:
+    cmd: mkinitcpio -p linux

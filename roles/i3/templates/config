@@ -77,6 +77,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
+bindsym Mod4+Shift+s exec ~/.config/i3/radio.sh gui
+
 mode "resize" {
     bindsym Down resize grow height 10 px
     bindsym Escape mode default

@@ -134,6 +134,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Dunst
 exec --no-startup-id dunst
 
+# Flatpak
+exec --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
 # Parcellite (clipboard)
 exec --no-startup-id parcellite
 

@@ -23,6 +23,7 @@
       - pipewire
       - pipewire-pulse
       - polkit-gnome
+      - redshift
       - rsync
       - ttf-dejavu
       - ttf-fira-code
@@ -62,6 +63,7 @@
   with_items:
     - blueman-applet.service
     - network-manager-applet.service
+    - redshift-gtk.service
 
 - name: Create GTK+ configuration directory
   file:

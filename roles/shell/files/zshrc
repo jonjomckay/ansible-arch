@@ -1,24 +1,16 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.config/oh-my-zsh
 
-# Enable zplug and install plugins
-source $HOME/.config/zplug/init.zsh
-
-zplug "zsh-users/zsh-autosuggestions", defer:2
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-if ! zplug check; then
-  zplug install
-fi
-
-zplug load
+# Enable ZSH plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Enable Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
 # Configure ZSH history
-HISTSIZE="10000"
-SAVEHIST="10000"
+HISTSIZE="100000"
+SAVEHIST="100000"
 HISTFILE="$HOME/.zsh_history"
 
 setopt HIST_FCNTL_LOCK

@@ -6,8 +6,10 @@
       - starship-bin
       - vim
       - zsh
+      - zsh-autosuggestions
       - zsh-completions
-    
+      - zsh-syntax-highlighting
+
 - name: Install Oh My Zsh
   git:
     repo: https://github.com/ohmyzsh/ohmyzsh

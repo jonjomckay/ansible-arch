@@ -18,6 +18,7 @@
       - jq
       - mpdris2
       - network-manager-applet
+      - noto-fonts-cjk
       - noto-fonts-emoji
       - otf-ipafont
       - pipewire

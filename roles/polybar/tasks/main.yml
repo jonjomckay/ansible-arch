@@ -16,6 +16,7 @@
     src: "{{ item }}"
     dest: "$HOME/.config/polybar/{{ item }}"
   with_items:
+    - bluetooth-battery.py
     - config.0.ini
     - config.1.ini
     - config.bar.ini

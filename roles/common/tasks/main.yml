@@ -89,3 +89,15 @@
 - name: Enable NTP time syncing
   become: yes
   shell: timedatectl set-ntp true
+
+- name: Create Bluetooth daemon service directory
+  file:
+    dest: /etc/systemd/system/bluetooth.service.d
+    state: directory
+  become: yes
+
+- name: Configure experimental Bluetooth daemon support
+  copy:
+    src: bluetooth-override.conf
+    dest: /etc/systemd/system/bluetooth.service.d/override.conf
+  become: yes

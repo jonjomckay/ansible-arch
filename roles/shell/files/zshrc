@@ -30,6 +30,7 @@ fi
 
 # Aliases
 alias cat='bat -pp'
+alias c='xclip -selection clipboard -i'
 
 # Environment
 export EDITOR=vim

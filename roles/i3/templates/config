@@ -125,6 +125,9 @@ exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling En
 exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.45
 exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 
+# Machine specific
+{{ i3_machine_specific }}
+
 # Wallpaper
 exec --no-startup-id feh --bg-fill $HOME/.config/i3/background.jpg
 
@@ -139,6 +142,3 @@ exec --no-startup-id dbus-update-activation-environment --systemd DBUS_SESSION_B
 
 # Parcellite (clipboard)
 exec --no-startup-id parcellite
-
-# Machine specific
-{{ i3_machine_specific }}

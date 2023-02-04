@@ -1,10 +1,10 @@
 - name: Install Waybar
   become: yes
-  package:
+  aur:
     name:
       - python-pydbus
       - python-psutil
-      - waybar
+      - waybar-hyprland-git
 
 - name: Create Waybar configuration directory
   file:
@@ -21,17 +21,3 @@
     - style.css
     - waybar-media.py
   register: waybar_configured
-
-- name: Copy Waybar systemd unit
-  template:
-    src: waybar.service
-    dest: $HOME/.config/systemd/user/waybar.service
-
-- name: Enable Waybar
-  systemd:
-    name: waybar
-    daemon_reload: yes
-    enabled: yes
-    scope: user
-    state: restarted
-  when: waybar_configured.changed

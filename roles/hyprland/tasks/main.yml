@@ -1,0 +1,24 @@
+- name: Install Hyprland
+  become: yes
+  aur:
+    name:
+      - hyprland-bin
+
+- name: Create Hyprland configuration directory
+  file:
+    dest: $HOME/.config/hyprland
+    recurse: yes
+    state: directory
+
+- name: Configure Hyprland
+  template:
+    src: "{{ item }}"
+    dest: "$HOME/.config/hyprland/{{ item }}"
+  with_items:
+    - config
+  register: hyprland_configured
+
+- name: Configure ZSH to start Hyprland
+  copy:
+    src: window-manager.zsh
+    dest: "$HOME/.config/oh-my-zsh/custom"

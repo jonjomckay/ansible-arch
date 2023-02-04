@@ -52,19 +52,15 @@
         "max-length": 10
     },
     "modules-left": [
-        "sway/workspaces"
+        "wlr/workspaces"
     ],
     "modules-right": [
         "custom/waybar-media",
         "battery",
         "temperature#cpu",
         "temperature#gpu",
-        "disk",
-        "cpu",
-        "memory",
         "pulseaudio",
         "tray",
-        "network",
         "clock"
     ],
     "network": {
@@ -98,7 +94,7 @@
         "on-click": "pavucontrol",
         "scroll-step": 1
     },
-    "sway/workspaces": {
+    "wlr/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
         "format": "{name}:  {icon}",
@@ -113,7 +109,8 @@
             "default": "",
             "focused": "",
             "urgent": ""
-        }
+        },
+        "on-click": "activate"
     },
     "temperature#cpu": {
         "critical-threshold": 80,

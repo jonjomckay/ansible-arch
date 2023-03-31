@@ -22,8 +22,7 @@
   programs.dconf.enable = true;
 
   services.blueman.enable = true;
-
-  # Enable the X11 windowing system.
+  services.tlp.enable = true;
   services.xserver = {
     enable = true;
 
@@ -44,6 +43,12 @@
       };
     };
 
+    layout = "us";
+
+    libinput = {
+      enable = true;
+    };
+
     videoDrivers = [ "amdgpu" ];
 
     windowManager.i3 = {
@@ -52,33 +57,20 @@
     };
   };
 
-  services.xserver.libinput.enable = true;
-
   users.users.jonjo = {
     isNormalUser = true;
     initialPassword = "password";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       androidStudioPackages.beta
-      aria2
-      bat
-      bind
       bitwarden
-      bmon
       brightnessctl
       dex
-      htop
-      inetutils
-      iotop
       jetbrains.pycharm-professional
-      jq
       mpdris2
       networkmanagerapplet
-      nixpkgs-fmt
       pavucontrol
       playerctl
-      rsync
-      whois
     ];
 
     shell = pkgs.zsh;
@@ -193,14 +185,6 @@
 
     xsession.windowManager.i3 = (import ../common/i3.nix pkgs);
   };
-
-  services.tlp.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

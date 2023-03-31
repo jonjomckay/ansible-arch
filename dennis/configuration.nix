@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, lib, pkgs, ... }:
 
 {
@@ -13,11 +9,8 @@
 
       ../common/audio.nix
       ../common/fonts.nix
+      ../common/system.nix
     ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.bluetooth.enable = true;
 
@@ -25,23 +18,10 @@
   networking.wireless.enable = false;
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/London";
-
   # Required for NetworkManager to save connections
   programs.dconf.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
-
   services.blueman.enable = true;
-
-  services.timesyncd.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -72,23 +52,7 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
-  };
-
-  # Configure keymap in X11
-  # services.xserver.layout = "uk";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
-
-  security.sudo.wheelNeedsPassword = false;
-
-  nixpkgs.config.allowUnfree = true;
 
   users.users.jonjo = {
     isNormalUser = true;
@@ -230,28 +194,6 @@
     xsession.windowManager.i3 = (import ../common/i3.nix pkgs);
   };
 
-  environment.pathsToLink = [ "/share/zsh" ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   services.tlp.enable = true;
 
   # Open ports in the firewall.
@@ -272,6 +214,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }
 

@@ -20,6 +20,10 @@
 
   # Required for NetworkManager to save connections
   programs.dconf.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   services.blueman.enable = true;
   services.tlp.enable = true;

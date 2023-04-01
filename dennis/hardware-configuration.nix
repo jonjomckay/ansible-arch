@@ -21,6 +21,12 @@
       options = [ "subvol=mnt/nixos" "compress=zstd:1" "autodefrag" "noatime" ];
     };
 
+  fileSystems."/home/jonjo/Projects" =
+    { device = "/dev/disk/by-uuid/e4e19715-1427-430e-9f38-e6df6f0fe721";
+      fsType = "btrfs";
+      options = [ "subvol=home/jonjo/Projects" "compress=zstd:1" "autodefrag" "noatime" ];
+    };
+
   boot.initrd.luks.devices."luks".device = "/dev/disk/by-uuid/91038dd8-56ac-46be-90a2-a049689a7d92";
 
   fileSystems."/boot" =

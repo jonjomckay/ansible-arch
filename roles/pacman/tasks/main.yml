@@ -34,5 +34,5 @@
 
 - name: Generate Pacman mirrorlist
   become: yes
-  shell: reflector --protocol https --latest 70 --sort rate --save /etc/pacman.d/mirrorlist
+  shell: reflector --protocol https --country "United Kingdom,France,Netherlands," --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
   when: pacman_tools_installed.changed

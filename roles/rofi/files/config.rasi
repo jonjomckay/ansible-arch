@@ -7,4 +7,4 @@ configuration {
     show-icons: true;
 }
 
-@theme "slate";
+@theme "slate"

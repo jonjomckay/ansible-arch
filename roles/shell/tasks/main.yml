@@ -21,6 +21,7 @@
     dest: $HOME/.config/zplug
 
 - name: Change default shell to ZSH
+  become: true
   user:
     name: jonjo
     shell: /usr/bin/zsh

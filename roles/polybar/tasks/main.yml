@@ -24,3 +24,11 @@
     - launch.sh
     - music.sh
   register: polybar_configured
+
+- name: Make Polybar scripts executable
+  file:
+    dest: "$HOME/.config/polybar/{{ item }}"
+    mode: 0755
+  with_items:
+    - launch.sh
+    - music.sh 

@@ -60,3 +60,4 @@
 - name: Reload i3
   shell: i3-msg reload
   when: i3_configured.changed
+  ignore_errors: true

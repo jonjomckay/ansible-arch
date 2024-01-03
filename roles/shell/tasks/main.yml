@@ -3,7 +3,7 @@
     name:
       - alacritty
       - bat
-      - starship-bin
+      - starship
       - vim
       - zsh
       - zsh-autosuggestions

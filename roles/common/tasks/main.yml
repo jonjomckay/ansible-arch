@@ -1,8 +1,10 @@
 - name: Remove old packages
-  aur:
+  become: true
+  pacman:
     name:
       - pulseaudio
       - pulseaudio-bluetooth
+    state: absent
 
 - name: Install general packages
   aur:

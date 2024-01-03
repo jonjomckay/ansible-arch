@@ -4,14 +4,7 @@
    - firefox
    - git
    - i3
-   - java
-   - javascript
-   - mpd
    - polybar
-   - syncthing
    - vscodium
   vars:
-    i3_machine_specific: >
-      exec --no-startup-id xrandr --output DisplayPort-0 --off --output DisplayPort-1 --mode 2560x1440 --pos 2560x0 --rotate right --output DisplayPort-2 --mode 2560x1440 --pos 0x712 --rotate normal --output DisplayPort-3 --mode 2560x1440 --pos 4000x712 --rotate normal
-    is_gpu_amd: no
-    network_main_interface: wlp11s0
+    network_main_interface: eth0

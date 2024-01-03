@@ -1,8 +1,6 @@
 dependencies:
 - common
 - dunst
-- gdm
-- keyring
 - polybar
 - rofi
 - shell

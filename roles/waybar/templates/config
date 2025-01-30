@@ -1,133 +1,207 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
 {
-    "battery": {
-        "bat": "BAT0",
-        "format": "{icon} {capacity}% ({time} left)",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {icon} {capacity}%",
-        "format-plugged": " {icon} {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "format-time": "{H}h{M}m",
-        "full-at": 96,
-        "interval": 10,
-        "max-length": 25,
-        "states": {
-            "critical": 15,
-            "warning": 30
-        }
-    },
-    "clock": {
-        "format": "{:%a %b %d %Y, %H:%M:%S}",
-        "interval": 1,
-        "tooltip": false
-    },
-    "cpu": {
-        "format": " {:2}%",
-        "interval": 2,
-        "max-length": 10
-    },
-    "custom/waybar-media": {
-        "escape": false,
-        "exec": "python3 $HOME/.config/waybar/waybar-media.py status",
-        "format": " {}",
-        "on-click": "python3 $HOME/.config/waybar/waybar-media.py playpause",
-        "on-scroll-down": "python3 $HOME/.config/waybar/waybar-media.py next",
-        "on-scroll-up": "python3 $HOME/.config/waybar/waybar-media.py previous",
-        "return-type": "json"
-    },
-    "disk": {
-        "format": " {percentage_used}%",
-        "interval": 10,
-        "path": "/"
-    },
-    "layer": "top",
-    "memory": {
-        "format": " {:2}%",
-        "interval": 2,
-        "max-length": 10
-    },
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "bottom",
+
+    "position": "top",
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 32,
+
+    "reload_style_on_change": true,
+
     "modules-left": [
-        "wlr/workspaces"
+        "hyprland/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "mpris"
     ],
     "modules-right": [
-        "custom/waybar-media",
-        "battery",
-        "temperature#cpu",
-        "temperature#gpu",
+        "network",
+        // "idle_inhibitor",
+        "memory",
+        // "cpu",
+        "temperature",
+        "custom/keyboard-layout",
+        // "backlight",
         "pulseaudio",
+        "battery",
         "tray",
-        "clock"
+        "clock#date",
+        "clock#time"
     ],
-    "network": {
-        "interface": "{{ network_main_interface }}",
-        "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "",
-        "tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
+
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "backlight": {
+        "format": " {percent}%",
+        "interval": 2,
+        "on-scroll-up": "brightnessctl set +2%",
+        "on-scroll-down": "brightnessctl set 2%-"
     },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon}  {volume}%",
-        "format-icons": {
-            "car": "",
-            "default": [
-                "",
-                ""
-            ],
-            "hands-free": "",
-            "headphone": "",
-            "headset": "",
-            "phone": "",
-            "portable": ""
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 25,
+            "critical": 15
         },
-        "format-muted": "",
-        "on-click": "pavucontrol",
-        "scroll-step": 1
+        // Connected to AC
+        "format": " {icon} {capacity}%", // Icon: bolt
+        // Not connected to AC
+        "format-discharging": "{icon} {capacity}%",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": true
     },
-    "wlr/workspaces": {
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "tooltip": false
+    },
+
+    "clock#date": {
+      "interval": 10,
+      "format": " {:%e %b %Y}", // Icon: calendar-alt
+      "tooltip-format": "{:%e %B %Y}",
+      "locale": "en_US.UTF-8",
+      "timezone": "Europe/London",
+    },
+
+    "cpu": {
+        "interval": 3,
+        "format": " {usage}% ({load})", // Icon: microchip
+        "states": {
+          "warning": 70,
+          "critical": 90
+        },
+    },
+
+    "custom/keyboard-layout": {
+      "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4 | cut -d ' ' -f1",
+      // Interval set only as a fallback, as the value is updated by signal
+      "interval": 10,
+      "format": " {}", // Icon: keyboard
+      // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+      "signal": 1, // SIGHUP
+      "tooltip": false,
+      "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+      "on-scroll-up": "swaymsg input type:keyboard xkb_switch_layout next",
+      "on-scroll-down": "swaymsg input type:keyboard xkb_switch_layout prev",
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": "",
+        },
+    },
+
+    "memory": {
+        "interval": 3,
+        "format": " {}%", // Icon: memory
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "mpris": {
+        "dynamic-order": ["artist", "title"],
+        "format": "{player_icon} {dynamic}",
+        "interval": 2,
+        "player-icons": {
+            "default": " "
+        }
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": "  {essid}", // Icon: wifi
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr} (signal: {signalStrength}%)"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 2,
+        "format": "{icon} {volume}%",
+        "format-muted": "  Muted", // Icon: volume-mute
+        "format-icons": {
+            "headphones": "", // Icon: headphones
+            "handsfree": "", // Icon: headset
+            "headset": "", // Icon: headset
+            "phone": "", // Icon: phone
+            "portable": "", // Icon: phone
+            "car": "", // Icon: car
+            "default": ["", ""] // Icons: volume-down, volume-up
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "alacritty --title='Sound Mixer' --command='pulsemixer'",
+        "tooltip": true
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 120
+    },
+
+    "hyprland/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
-        "format": "{name}:  {icon}",
+        "format": "{icon}   {name}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "7": "",
-            "default": "",
+            "1:WWW": "", // Icon: firefox-browser
+            "2:Editor": "", // Icon: code
+            "3:Terminals": "", // Icon: terminal
+            "4:Mail": "", // Icon: mail
+            "8:Documents": "", // Icon: book
+            "9:Multimedia": "", // Icon: music
+            "10:Torrent": "", // Icon: cloud-download-alt
+            "urgent": "",
             "focused": "",
-            "urgent": ""
-        },
-        "on-click": "activate"
+            "default": ""
+        }
     },
-    "temperature#cpu": {
-        "critical-threshold": 80,
-        "format": " <b>CPU:</b> {temperatureC}°C",
-        "format-critical": " <b>CPU:</b> {temperatureC}°C",
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "interval": 2
+
+    "temperature": {
+      "critical-threshold": 75,
+      "interval": 3,
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": [
+          "", // Icon: temperature-empty
+          "", // Icon: temperature-quarter
+          "", // Icon: temperature-half
+          "", // Icon: temperature-three-quarters
+          ""  // Icon: temperature-full
+      ],
+      "tooltip": true
     },
-    "temperature#gpu": {
-        "critical-threshold": 80,
-        "format": " <b>GPU:</b> {temperatureC}°C",
-        "format-critical": " <b>GPU:</b> {temperatureC}°C",
-        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
-        "interval": 2
-    },
+
     "tray": {
-        "icon-size": "21",
+        "icon-size": 16,
         "spacing": 10
     }
+
 }
